@@ -142,6 +142,15 @@ tr:hover td { background: var(--bg3); }
 .checklist li.done { opacity: 0.55; }
 .checklist li.done span, .checklist li.done div:last-child { text-decoration: line-through; color: var(--muted); }
 
+/* Video checkbox */
+.vcb { width: 15px; height: 15px; border: 1.5px solid var(--border); border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: all 0.15s; vertical-align: middle; }
+.vcb:hover { border-color: var(--green); }
+.vcb.watched { background: var(--green); border-color: var(--green); }
+.vcb.watched::after { content: ''; display: block; width: 3px; height: 6px; border: 1.5px solid #fff; border-top: none; border-left: none; transform: rotate(45deg) translateY(-1px); }
+tr.vid-done td { opacity: 0.5; }
+.vid-progress { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; margin: 8px 0 4px; }
+.vid-progress .prob-bar { flex: 1; }
+
 /* Star rating */
 .stars { color: var(--amber); font-size: 12px; }
 
@@ -323,117 +332,117 @@ details > div { padding: 0 16px 16px; }
   </div>
 
   <details open>
-    <summary>Unit 1 — Introduction (1 video)</summary>
+    <summary data-vid="vid-u1">Unit 1 — Introduction (1 video)</summary>
     <div><div class="tbl-wrap"><table>
-      <tr><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
-      <tr><td>1</td><td>Introduction to Power Electronics</td><td>1</td><td>Scope, applications, classification of converters</td><td><span class="vid">2x</span></td><td>Rare</td></tr>
+      <tr><th style="width:36px">Done</th><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>1</td><td>Introduction to Power Electronics</td><td>1</td><td>Scope, applications, classification of converters</td><td><span class="vid">2x</span></td><td>Rare</td></tr>
     </table></div></div>
   </details>
 
   <details open>
-    <summary>Unit 2 — Semiconductor Power Devices (Videos 2–40)</summary>
+    <summary data-vid="vid-u2">Unit 2 — Semiconductor Power Devices (Videos 2–40)</summary>
     <div><div class="tbl-wrap"><table>
-      <tr><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
-      <tr><td>2</td><td>Power Diode</td><td>2</td><td>Structure, V-I char, reverse recovery, types</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025M</td></tr>
-      <tr><td>3</td><td>Power BJT</td><td>2</td><td>Darlington, V-I char, operating modes</td><td><span class="vid">2x</span></td><td>Partial</td></tr>
-      <tr><td>4</td><td>SCR — Basics</td><td>2</td><td>Structure, symbol, V-I char (3 modes), principle of operation</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>5</td><td>Dynamic / Switching Char. of SCR</td><td>2</td><td>Turn-on time, turn-off time, delay/rise/fall, tq, di/dt, dv/dt</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>6</td><td>Gate Characteristics of SCR</td><td>2</td><td>Gate trigger current/voltage, IGT, VGT, gate char curve</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024M</td></tr>
-      <tr><td>7</td><td>SCR Triggering Methods</td><td>2</td><td>6 turn-on methods: forward V, gate, dv/dt, di/dt, light, temp</td><td><span class="vid watch-vid">WATCH</span></td><td> Context</td></tr>
-      <tr><td>8</td><td>Turn-OFF Methods of SCR</td><td>2</td><td>Natural, forced commutation, line/circuit commutation</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>9</td><td>SCR Protection</td><td>2</td><td>di/dt, dv/dt, overcurrent, overvoltage, gate protection</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023B</td></tr>
-      <tr><td>10</td><td>SCR Protection Types</td><td>2</td><td>Snubber circuit, fuse, RC snubber</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>11</td><td>Two Transistor Analogy of SCR</td><td>2</td><td>2-transistor model, anode current derivation, α1+α2=1</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>12</td><td>SCR Mounting</td><td>2</td><td>Lead, bolt, stud mounting types</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>13</td><td>Resistor Trigger Circuit</td><td>2</td><td>R-trigger, waveforms, firing angle</td><td><span class="vid">2x</span></td><td>Low</td></tr>
-      <tr><td>14</td><td>RC Triggering of SCR</td><td>2</td><td>Half/full wave RC triggering</td><td><span class="vid">2x</span></td><td>Low</td></tr>
-      <tr><td>15</td><td>Methods to Improve di/dt</td><td>2</td><td>Series inductor method</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>16</td><td>UJT</td><td>—</td><td>Structure, characteristics, intrinsic standoff ratio η</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>17</td><td>UJT as Relaxation Oscillator</td><td>—</td><td>RC timing, waveforms</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>18</td><td>PUT</td><td>—</td><td>Programmable UJT basics</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>19</td><td>PUT as Relaxation Oscillator</td><td>—</td><td>Oscillator circuit</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>20</td><td>R vs RC vs UJT Triggering</td><td>—</td><td>Comparison table</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>21</td><td>TRIAC</td><td>2</td><td>Structure, symbol, working, V-I char, 4 quadrants</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>22</td><td>Modes of TRIAC</td><td>2</td><td>4 operating modes (I+, I−, III+, III−)</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>23</td><td>DIAC</td><td>2</td><td>Structure, V-I char, working, breakover voltage</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>24</td><td>SCR vs DIAC vs TRIAC</td><td>2</td><td>Comparison table</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025B</td></tr>
-      <tr><td>25</td><td>SCS — Silicon Controlled Switch</td><td>—</td><td>Not in RTU syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>26</td><td>MCT — MOS Controlled Thyristor</td><td>—</td><td>Not in RTU syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>27</td><td>Power MOSFET</td><td>2</td><td>Vertical DMOS structure, working, V-I char, SOA, enhancement/depletion type</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>28</td><td>Power BJT vs Power MOSFET</td><td>2</td><td>Comparison: speed, drive, applications</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>29</td><td>IGBT</td><td>2</td><td>Symbol, structure, working, latch-up, V-I char, switching char, SOA</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>30</td><td>LASCR</td><td>—</td><td>Not in RTU syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>31</td><td>GTO</td><td>2</td><td>Structure, symbol, working, turn-on/off, comparison with SCR</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023M, 2025B</td></tr>
-      <tr><td>32</td><td>Series Connection of SCR</td><td>—</td><td>Voltage sharing, static/dynamic equalizing</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>33</td><td>Series SCR — Examples</td><td>—</td><td>Numerical examples</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>34</td><td>Parallel Connection of SCR</td><td>—</td><td>Current sharing</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>35</td><td>Class A Commutation</td><td>—</td><td>Self-commutation (LC oscillation)</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
-      <tr><td>36–40</td><td>Class B–F Commutation</td><td>—</td><td>Commutation classes (not in RTU PE syllabus)</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><th style="width:36px">Done</th><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>2</td><td>Power Diode</td><td>2</td><td>Structure, V-I char, reverse recovery, types</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025M</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>3</td><td>Power BJT</td><td>2</td><td>Darlington, V-I char, operating modes</td><td><span class="vid">2x</span></td><td>Partial</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>4</td><td>SCR — Basics</td><td>2</td><td>Structure, symbol, V-I char (3 modes), principle of operation</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>5</td><td>Dynamic / Switching Char. of SCR</td><td>2</td><td>Turn-on time, turn-off time, delay/rise/fall, tq, di/dt, dv/dt</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>6</td><td>Gate Characteristics of SCR</td><td>2</td><td>Gate trigger current/voltage, IGT, VGT, gate char curve</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024M</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>7</td><td>SCR Triggering Methods</td><td>2</td><td>6 turn-on methods: forward V, gate, dv/dt, di/dt, light, temp</td><td><span class="vid watch-vid">WATCH</span></td><td> Context</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>8</td><td>Turn-OFF Methods of SCR</td><td>2</td><td>Natural, forced commutation, line/circuit commutation</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>9</td><td>SCR Protection</td><td>2</td><td>di/dt, dv/dt, overcurrent, overvoltage, gate protection</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023B</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>10</td><td>SCR Protection Types</td><td>2</td><td>Snubber circuit, fuse, RC snubber</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>11</td><td>Two Transistor Analogy of SCR</td><td>2</td><td>2-transistor model, anode current derivation, α1+α2=1</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>12</td><td>SCR Mounting</td><td>2</td><td>Lead, bolt, stud mounting types</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>13</td><td>Resistor Trigger Circuit</td><td>2</td><td>R-trigger, waveforms, firing angle</td><td><span class="vid">2x</span></td><td>Low</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>14</td><td>RC Triggering of SCR</td><td>2</td><td>Half/full wave RC triggering</td><td><span class="vid">2x</span></td><td>Low</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>15</td><td>Methods to Improve di/dt</td><td>2</td><td>Series inductor method</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>16</td><td>UJT</td><td>—</td><td>Structure, characteristics, intrinsic standoff ratio η</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>17</td><td>UJT as Relaxation Oscillator</td><td>—</td><td>RC timing, waveforms</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>18</td><td>PUT</td><td>—</td><td>Programmable UJT basics</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>19</td><td>PUT as Relaxation Oscillator</td><td>—</td><td>Oscillator circuit</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>20</td><td>R vs RC vs UJT Triggering</td><td>—</td><td>Comparison table</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>21</td><td>TRIAC</td><td>2</td><td>Structure, symbol, working, V-I char, 4 quadrants</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>22</td><td>Modes of TRIAC</td><td>2</td><td>4 operating modes (I+, I−, III+, III−)</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>23</td><td>DIAC</td><td>2</td><td>Structure, V-I char, working, breakover voltage</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>24</td><td>SCR vs DIAC vs TRIAC</td><td>2</td><td>Comparison table</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025B</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>25</td><td>SCS — Silicon Controlled Switch</td><td>—</td><td>Not in RTU syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>26</td><td>MCT — MOS Controlled Thyristor</td><td>—</td><td>Not in RTU syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>27</td><td>Power MOSFET</td><td>2</td><td>Vertical DMOS structure, working, V-I char, SOA, enhancement/depletion type</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>28</td><td>Power BJT vs Power MOSFET</td><td>2</td><td>Comparison: speed, drive, applications</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>29</td><td>IGBT</td><td>2</td><td>Symbol, structure, working, latch-up, V-I char, switching char, SOA</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>30</td><td>LASCR</td><td>—</td><td>Not in RTU syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>31</td><td>GTO</td><td>2</td><td>Structure, symbol, working, turn-on/off, comparison with SCR</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023M, 2025B</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>32</td><td>Series Connection of SCR</td><td>—</td><td>Voltage sharing, static/dynamic equalizing</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>33</td><td>Series SCR — Examples</td><td>—</td><td>Numerical examples</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>34</td><td>Parallel Connection of SCR</td><td>—</td><td>Current sharing</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>35</td><td>Class A Commutation</td><td>—</td><td>Self-commutation (LC oscillation)</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>36–40</td><td>Class B–F Commutation</td><td>—</td><td>Commutation classes (not in RTU PE syllabus)</td><td><span class="vid skip-vid">SKIP</span></td><td>Not in syllabus</td></tr>
     </table></div></div>
   </details>
 
   <details open>
-    <summary>Unit 3 — Converters (Videos 41–49)</summary>
+    <summary data-vid="vid-u3">Unit 3 — Converters (Videos 41–49)</summary>
     <div><div class="tbl-wrap"><table>
-      <tr><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
-      <tr><td>41</td><td>Basics of Converter</td><td>3</td><td>Classification: half/full controlled, AC-DC, types of converters</td><td><span class="vid">2x</span></td><td>Context</td></tr>
-      <tr><td>42</td><td>Rectifier & Filter</td><td>3</td><td>Uncontrolled half/full wave, filter types</td><td><span class="vid">2x</span></td><td>Foundation</td></tr>
-      <tr><td>43</td><td>Half-Wave Controlled Rectifier</td><td>3</td><td>With R, RL, freewheeling diode; Vdc formula derivation, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>44</td><td>Full-Wave Controlled Rectifier</td><td>3</td><td>Centre-tap, waveforms, Vdc = (2Vm/π)cosα</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>45</td><td>Full Converter (Single-Phase)</td><td>3</td><td>Full bridge, 4 SCRs, waveforms, α range 0°–90° rectifier / 90°–180° inverter</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>46</td><td>Symmetrical Semi Converter</td><td>3</td><td>2 SCRs + 2 diodes, waveforms</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>47</td><td>Asymmetrical Semi Converter</td><td>3</td><td>2 SCRs + freewheeling diode</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>48</td><td>3-Phase Half-Wave Rectifier</td><td>3</td><td>Uncontrolled, waveforms, Vdc</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025M</td></tr>
-      <tr><td>49</td><td>3-Phase Half-Wave Controlled</td><td>3</td><td>SCR-controlled, firing sequence, waveforms, Vdc = (3√3Vm/2π)cosα</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-25</td></tr>
+      <tr><th style="width:36px">Done</th><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>41</td><td>Basics of Converter</td><td>3</td><td>Classification: half/full controlled, AC-DC, types of converters</td><td><span class="vid">2x</span></td><td>Context</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>42</td><td>Rectifier & Filter</td><td>3</td><td>Uncontrolled half/full wave, filter types</td><td><span class="vid">2x</span></td><td>Foundation</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>43</td><td>Half-Wave Controlled Rectifier</td><td>3</td><td>With R, RL, freewheeling diode; Vdc formula derivation, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>44</td><td>Full-Wave Controlled Rectifier</td><td>3</td><td>Centre-tap, waveforms, Vdc = (2Vm/π)cosα</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>45</td><td>Full Converter (Single-Phase)</td><td>3</td><td>Full bridge, 4 SCRs, waveforms, α range 0°–90° rectifier / 90°–180° inverter</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>46</td><td>Symmetrical Semi Converter</td><td>3</td><td>2 SCRs + 2 diodes, waveforms</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>47</td><td>Asymmetrical Semi Converter</td><td>3</td><td>2 SCRs + freewheeling diode</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>48</td><td>3-Phase Half-Wave Rectifier</td><td>3</td><td>Uncontrolled, waveforms, Vdc</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025M</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>49</td><td>3-Phase Half-Wave Controlled</td><td>3</td><td>SCR-controlled, firing sequence, waveforms, Vdc = (3√3Vm/2π)cosα</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-25</td></tr>
     </table></div></div>
   </details>
 
   <details open>
-    <summary>Unit 4 — Inverters (Videos 50–56)</summary>
+    <summary data-vid="vid-u4">Unit 4 — Inverters (Videos 50–56)</summary>
     <div><div class="tbl-wrap"><table>
-      <tr><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
-      <tr><td>50</td><td>Series Inverter</td><td>4</td><td>LC series commutation, waveforms</td><td><span class="vid">2x</span></td><td> 2022</td></tr>
-      <tr><td>51</td><td>Parallel Inverter</td><td>4</td><td>LC parallel commutation</td><td><span class="vid">2x</span></td><td> 2022</td></tr>
-      <tr><td>52</td><td>Single-Phase Half-Bridge Inverter</td><td>4</td><td>2-switch VSI, Vo = Vdc/2, waveforms, harmonics, RMS</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>53</td><td>Single-Phase Full-Bridge Inverter</td><td>4</td><td>4-switch VSI, Vo = Vdc, waveforms, harmonics, Fourier</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>54</td><td>3-Phase Inverter — 120° Mode</td><td>4</td><td>Firing sequence, waveforms, line voltages, Fourier series</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>55</td><td>3-Phase Inverter — 180° Mode</td><td>4</td><td>Firing sequence, waveforms, line voltages</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024</td></tr>
-      <tr><td>56</td><td>PWM Inverter</td><td>4</td><td>SPWM, modulation index, THD reduction, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><th style="width:36px">Done</th><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>50</td><td>Series Inverter</td><td>4</td><td>LC series commutation, waveforms</td><td><span class="vid">2x</span></td><td> 2022</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>51</td><td>Parallel Inverter</td><td>4</td><td>LC parallel commutation</td><td><span class="vid">2x</span></td><td> 2022</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>52</td><td>Single-Phase Half-Bridge Inverter</td><td>4</td><td>2-switch VSI, Vo = Vdc/2, waveforms, harmonics, RMS</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>53</td><td>Single-Phase Full-Bridge Inverter</td><td>4</td><td>4-switch VSI, Vo = Vdc, waveforms, harmonics, Fourier</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>54</td><td>3-Phase Inverter — 120° Mode</td><td>4</td><td>Firing sequence, waveforms, line voltages, Fourier series</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>55</td><td>3-Phase Inverter — 180° Mode</td><td>4</td><td>Firing sequence, waveforms, line voltages</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>56</td><td>PWM Inverter</td><td>4</td><td>SPWM, modulation index, THD reduction, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
     </table></div></div>
   </details>
 
   <details open>
-    <summary>Unit 5 — Industrial Power Supplies (Videos 57–85)</summary>
+    <summary data-vid="vid-u5">Unit 5 — Industrial Power Supplies (Videos 57–85)</summary>
     <div><div class="tbl-wrap"><table>
-      <tr><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
-      <tr><td>57</td><td>Control Strategies of Chopper</td><td>5</td><td>TRC (time-ratio control), PWM, CLC (current limit)</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>58</td><td>Current Control Strategy</td><td>5</td><td>Hysteresis current control, bandwidth</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>59</td><td>Comparison of Control Strategies</td><td>5</td><td>TRC vs PWM vs CLC comparison</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>60</td><td>Step-Up and Step-Down Chopper</td><td>5</td><td> Step-up: Vo=Vs/(1-α), Step-down: Vo=αVs, waveforms, numericals</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>61</td><td>Class A Chopper</td><td>5</td><td>Type A = step-down, 1st quadrant only</td><td><span class="vid">2x</span></td><td>Conceptual</td></tr>
-      <tr><td>62</td><td>Class B Chopper</td><td>5</td><td>Step-up, 2nd quadrant only</td><td><span class="vid">2x</span></td><td>Conceptual</td></tr>
-      <tr><td>63</td><td>Class C Chopper</td><td>5</td><td>2-quadrant reversible (positive current)</td><td><span class="vid watch-vid">WATCH</span></td><td> Reversible concept</td></tr>
-      <tr><td>64</td><td>Class D Chopper</td><td>5</td><td>2-quadrant (negative current)</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>65</td><td>Class E Chopper</td><td>5</td><td>4-quadrant reversible</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>66</td><td>Jones Chopper</td><td>—</td><td>Commutation circuit (not in RTU PE syllabus)</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>67</td><td>Morgan Chopper</td><td>—</td><td>Resonant commutation (not in RTU PE syllabus)</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>68–73</td><td>Cycloconverters (6 videos)</td><td>—</td><td>Step-up/down bridge cycloconverter, 3-phase to 1-phase</td><td><span class="vid skip-vid">SKIP</span></td><td>NOT in syllabus</td></tr>
-      <tr><td>74</td><td>Buck Converter</td><td>5</td><td>DC-DC step-down, inductor current, Vo=αVs, continuous/discontinuous</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
-      <tr><td>75</td><td>Boost Converter</td><td>5</td><td>DC-DC step-up, Vo=Vs/(1-α), derivation, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-25</td></tr>
-      <tr><td>76</td><td>Buck-Boost Converter</td><td>5</td><td>Inverting, Vo=−αVs/(1-α), waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> 2022-23</td></tr>
-      <tr><td>77</td><td>Buck-Boost Output Voltage Derivation</td><td>5</td><td>Mathematical derivation of Vo</td><td><span class="vid watch-vid">WATCH</span></td><td> Numerical base</td></tr>
-      <tr><td>78</td><td>Flyback Converter — Discontinuous</td><td>5</td><td>Waveforms, operation, energy transfer</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-24</td></tr>
-      <tr><td>79</td><td>Flyback Converter — Continuous</td><td>5</td><td>CCM mode, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024M</td></tr>
-      <tr><td>80</td><td>Isolated Forward Converter</td><td>5</td><td>Transformer-isolated buck, reset winding</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>81</td><td>Online UPS</td><td>5</td><td>Block diagram, working, double conversion, advantages</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
-      <tr><td>82</td><td>Offline UPS</td><td>5</td><td>Block diagram, working, standby operation</td><td><span class="vid watch-vid">WATCH</span></td><td> 2022-25</td></tr>
-      <tr><td>83</td><td>SMPS — Block Diagram</td><td>5</td><td>Block diagram: rectifier, PWM controller, HF transformer, filter</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-25</td></tr>
-      <tr><td>84</td><td>SMPS — Circuit</td><td>5</td><td>Half-bridge and full-bridge SMPS</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025M</td></tr>
-      <tr><td>85</td><td>SMPS vs Linear PS</td><td>5</td><td>Advantages/disadvantages comparison</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
-      <tr><td>86</td><td>Dielectric Heating</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>87</td><td>Induction Heating</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>88</td><td>Battery Charger</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
-      <tr><td>89</td><td>Pulse Transformer</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><th style="width:36px">Done</th><th>#</th><th>Video Title</th><th>Unit</th><th>Topics</th><th>Action</th><th>PYQ?</th></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>57</td><td>Control Strategies of Chopper</td><td>5</td><td>TRC (time-ratio control), PWM, CLC (current limit)</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>58</td><td>Current Control Strategy</td><td>5</td><td>Hysteresis current control, bandwidth</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>59</td><td>Comparison of Control Strategies</td><td>5</td><td>TRC vs PWM vs CLC comparison</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>60</td><td>Step-Up and Step-Down Chopper</td><td>5</td><td> Step-up: Vo=Vs/(1-α), Step-down: Vo=αVs, waveforms, numericals</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>61</td><td>Class A Chopper</td><td>5</td><td>Type A = step-down, 1st quadrant only</td><td><span class="vid">2x</span></td><td>Conceptual</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>62</td><td>Class B Chopper</td><td>5</td><td>Step-up, 2nd quadrant only</td><td><span class="vid">2x</span></td><td>Conceptual</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>63</td><td>Class C Chopper</td><td>5</td><td>2-quadrant reversible (positive current)</td><td><span class="vid watch-vid">WATCH</span></td><td> Reversible concept</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>64</td><td>Class D Chopper</td><td>5</td><td>2-quadrant (negative current)</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>65</td><td>Class E Chopper</td><td>5</td><td>4-quadrant reversible</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>66</td><td>Jones Chopper</td><td>—</td><td>Commutation circuit (not in RTU PE syllabus)</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>67</td><td>Morgan Chopper</td><td>—</td><td>Resonant commutation (not in RTU PE syllabus)</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>68–73</td><td>Cycloconverters (6 videos)</td><td>—</td><td>Step-up/down bridge cycloconverter, 3-phase to 1-phase</td><td><span class="vid skip-vid">SKIP</span></td><td>NOT in syllabus</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>74</td><td>Buck Converter</td><td>5</td><td>DC-DC step-down, inductor current, Vo=αVs, continuous/discontinuous</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>75</td><td>Boost Converter</td><td>5</td><td>DC-DC step-up, Vo=Vs/(1-α), derivation, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>76</td><td>Buck-Boost Converter</td><td>5</td><td>Inverting, Vo=−αVs/(1-α), waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> 2022-23</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>77</td><td>Buck-Boost Output Voltage Derivation</td><td>5</td><td>Mathematical derivation of Vo</td><td><span class="vid watch-vid">WATCH</span></td><td> Numerical base</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>78</td><td>Flyback Converter — Discontinuous</td><td>5</td><td>Waveforms, operation, energy transfer</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-24</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>79</td><td>Flyback Converter — Continuous</td><td>5</td><td>CCM mode, waveforms</td><td><span class="vid watch-vid">WATCH</span></td><td> 2024M</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>80</td><td>Isolated Forward Converter</td><td>5</td><td>Transformer-isolated buck, reset winding</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>81</td><td>Online UPS</td><td>5</td><td>Block diagram, working, double conversion, advantages</td><td><span class="vid watch-vid">WATCH</span></td><td> Every Year</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>82</td><td>Offline UPS</td><td>5</td><td>Block diagram, working, standby operation</td><td><span class="vid watch-vid">WATCH</span></td><td> 2022-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>83</td><td>SMPS — Block Diagram</td><td>5</td><td>Block diagram: rectifier, PWM controller, HF transformer, filter</td><td><span class="vid watch-vid">WATCH</span></td><td> 2023-25</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>84</td><td>SMPS — Circuit</td><td>5</td><td>Half-bridge and full-bridge SMPS</td><td><span class="vid watch-vid">WATCH</span></td><td> 2025M</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>85</td><td>SMPS vs Linear PS</td><td>5</td><td>Advantages/disadvantages comparison</td><td><span class="vid">2x</span></td><td>Backup</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>86</td><td>Dielectric Heating</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>87</td><td>Induction Heating</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>88</td><td>Battery Charger</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
+      <tr><td><span class="vcb" onclick="toggleVid(this)"></span></td><td>89</td><td>Pulse Transformer</td><td>—</td><td>Not in RTU PE syllabus</td><td><span class="vid skip-vid">SKIP</span></td><td>Never asked</td></tr>
     </table></div></div>
   </details>
 
@@ -1183,11 +1192,11 @@ details > div { padding: 0 16px 16px; }
           <div id="form-wrap">
             <div class="field">
               <label>Your Name</label>
-              <input type="text" id="f-name" placeholder="Manan Vijay" />
+              <input type="text" id="f-name" placeholder="e.g. Rahul Sharma" />
             </div>
             <div class="field">
               <label>Email / Social Handle</label>
-              <input type="text" id="f-email" placeholder="Email or LinkedIn/GitHub username" />
+              <input type="text" id="f-email" placeholder="email or LinkedIn/GitHub username" />
             </div>
             <div class="field">
               <label>Type of Message</label>
@@ -1270,6 +1279,121 @@ details > div { padding: 0 16px 16px; }
 
 <script>
 function jumpTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── TOPIC CHECKLIST ── */
+function toggleCheck(li) {
+  const box = li.querySelector('.check-box');
+  const isChecked = box.classList.toggle('checked');
+  li.classList.toggle('done', isChecked);
+  updateCounters();
+  saveProgress();
+}
+function saveProgress() {
+  const items = document.querySelectorAll('.checklist li');
+  const state = Array.from(items).map(li => li.classList.contains('done'));
+  try { localStorage.setItem('pe_checklist', JSON.stringify(state)); } catch(e) {}
+}
+function loadProgress() {
+  try {
+    const state = JSON.parse(localStorage.getItem('pe_checklist') || '[]');
+    const items = document.querySelectorAll('.checklist li');
+    items.forEach((li, i) => {
+      if (state[i]) { li.classList.add('done'); li.querySelector('.check-box').classList.add('checked'); }
+    });
+  } catch(e) {}
+  updateCounters();
+}
+function updateCounters() {
+  document.querySelectorAll('.card.unit-2, .card.unit-3, .card.unit-4, .card.unit-5, .card.unit-6').forEach(card => {
+    const items = card.querySelectorAll('.checklist li');
+    if (!items.length) return;
+    const done = card.querySelectorAll('.checklist li.done').length;
+    let counter = card.querySelector('.checklist-counter');
+    if (!counter) {
+      counter = document.createElement('div');
+      counter.className = 'checklist-counter';
+      counter.style.cssText = 'font-size:11px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px;';
+      const bar = document.createElement('div');
+      bar.className = 'prob-bar'; bar.style.flex = '1';
+      bar.innerHTML = '<div class="prob-fill" style="transition:width 0.3s;"></div>';
+      counter.appendChild(bar);
+      const label = document.createElement('span');
+      counter.appendChild(label);
+      const checklist = card.querySelector('.checklist');
+      if (checklist) card.insertBefore(counter, checklist);
+    }
+    const pct = items.length ? Math.round((done/items.length)*100) : 0;
+    counter.querySelector('.prob-fill').style.width = pct + '%';
+    counter.querySelector('span').textContent = done + ' / ' + items.length + ' done';
+  });
+}
+
+/* ── VIDEO WATCH TRACKER ── */
+function toggleVid(vcb) {
+  const row = vcb.closest('tr');
+  const isWatched = vcb.classList.toggle('watched');
+  row.classList.toggle('vid-done', isWatched);
+  saveVidProgress();
+  updateVidCounters();
+}
+function saveVidProgress() {
+  const vcbs = document.querySelectorAll('.vcb');
+  const state = Array.from(vcbs).map(v => v.classList.contains('watched'));
+  try { localStorage.setItem('pe_videos', JSON.stringify(state)); } catch(e) {}
+}
+function loadVidProgress() {
+  try {
+    const state = JSON.parse(localStorage.getItem('pe_videos') || '[]');
+    const vcbs = document.querySelectorAll('.vcb');
+    vcbs.forEach((v, i) => {
+      if (state[i]) {
+        v.classList.add('watched');
+        v.closest('tr').classList.add('vid-done');
+      }
+    });
+  } catch(e) {}
+  updateVidCounters();
+}
+function updateVidCounters() {
+  document.querySelectorAll('details').forEach(det => {
+    const vcbs   = det.querySelectorAll('.vcb');
+    if (!vcbs.length) return;
+    const watched = det.querySelectorAll('.vcb.watched').length;
+    const total   = vcbs.length;
+    const pct     = Math.round((watched / total) * 100);
+    const sum     = det.querySelector('summary');
+    let bar = det.querySelector('.vid-progress');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.className = 'vid-progress';
+      bar.innerHTML = '<div class="prob-bar"><div class="prob-fill" style="transition:width 0.3s;width:0%"></div></div><span></span>';
+      sum.after(bar);
+    }
+    bar.querySelector('.prob-fill').style.width = pct + '%';
+    bar.querySelector('span').textContent = watched + ' / ' + total + ' watched';
+  });
+}
+
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const type = document.getElementById('f-type').value;
+  const msg  = document.getElementById('f-msg').value.trim();
+  if (!name || !type || !msg) {
+    alert('Please fill in your name, message type, and message before sending.');
+    return;
+  }
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadProgress();
+  loadVidProgress();
+});
+</script>
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
